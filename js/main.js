@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===== Backend API Config =====
-const API_BASE = 'http://127.0.0.1:8000';
+const API_BASE = 'https://dapros-production.up.railway.app';
 function downloadOutput(fileId) {
   if (!fileId) return showToast('File output belum tersedia', 'warning');
   window.location.href = `${API_BASE}/api/download/${fileId}`;
