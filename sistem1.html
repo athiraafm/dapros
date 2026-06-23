@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistem 1 — Create DAPROS</title>
+  <meta name="description" content="Create DAPROS: Upload file Excel data prospek, proses otomatis dan download hasil." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>" />
+</head>
+<body>
+
+<div class="bg-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+</div>
+
+<div class="app-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">📊</div>
+      <div class="logo-text">
+        <h1>DAPROS</h1>
+        <p>Data Prospek System</p>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Menu Utama</div>
+      <a href="index.html" class="nav-item">
+        <span class="nav-icon">🏠</span><span>Dashboard</span>
+      </a>
+      <div class="nav-section-label" style="margin-top:16px">Sistem</div>
+      <a href="sistem1.html" class="nav-item active">
+        <span class="nav-icon">✨</span><span>Create DAPROS</span><span class="nav-badge">S1</span>
+      </a>
+      <a href="sistem2.html" class="nav-item">
+        <span class="nav-icon">🔍</span><span>Filter Data</span><span class="nav-badge">S2</span>
+      </a>
+      <a href="sistem3.html" class="nav-item">
+        <span class="nav-icon">🗂️</span><span>Pembagian Data</span><span class="nav-badge">S3</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-card">
+        <div class="user-avatar">D</div>
+        <div class="user-info"><p>DAPROS User</p><span>Admin</span></div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="main-content">
+    <header class="top-header">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        <div class="header-left">
+          <div class="header-title">Create DAPROS</div>
+          <div class="header-breadcrumb">Dashboard / Sistem 1</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="header-badge">
+          <div class="status-dot"></div>
+          Sistem Aktif
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <div class="page-header-inner">
+          <div class="page-title-group">
+            <div class="page-number">Sistem 01 — Create</div>
+            <h1 class="page-title">Create <span>DAPROS</span></h1>
+            <p class="page-desc">Upload file Excel data prospek kamu, sistem akan otomatis memproses dan membuat dokumen DAPROS yang terstruktur.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step Indicator -->
+      <div class="step-indicator" id="step-indicator">
+        <div class="step-item" data-step="0">
+          <div class="step-circle active">1</div>
+          <div class="step-label">
+            <span class="s-num">Langkah 1</span>
+            <span class="s-name">Upload File</span>
+          </div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-item" data-step="1">
+          <div class="step-circle">2</div>
+          <div class="step-label">
+            <span class="s-num">Langkah 2</span>
+            <span class="s-name">Validasi</span>
+          </div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-item" data-step="2">
+          <div class="step-circle">3</div>
+          <div class="step-label">
+            <span class="s-num">Langkah 3</span>
+            <span class="s-name">Proses</span>
+          </div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-item" data-step="3">
+          <div class="step-circle">4</div>
+          <div class="step-label">
+            <span class="s-num">Langkah 4</span>
+            <span class="s-name">Download</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid Layout -->
+      <div class="grid-2" style="align-items:start;gap:24px">
+
+        <!-- Left: Upload Card -->
+        <div>
+          <div class="card" id="upload-card">
+            <div class="card-title"><span class="icon">📁</span> Upload File Excel</div>
+            <div class="card-subtitle">Format yang didukung: .xlsx, .xls — Maksimal ukuran: 100MB</div>
+
+            <div class="upload-zone" id="upload-zone-1">
+              <input type="file" id="file-input-1" accept=".xlsx,.xls" />
+              <div class="upload-icon-wrap">📊</div>
+              <div class="upload-title">Drop file Excel di sini</div>
+              <div class="upload-desc">atau klik untuk memilih file</div>
+              <div class="upload-hint">📂 Pilih File .xlsx / .xls</div>
+            </div>
+
+            <!-- File List -->
+            <div class="file-list" id="file-list-1"></div>
+
+            <div class="info-box info" style="margin-top:16px">
+              <span class="info-icon">ℹ️</span>
+              <div class="info-text">
+                <p>Pastikan file Excel berisi kolom: <strong>Nama, Nomor, Alamat, Witel</strong> dan kolom lainnya yang diperlukan sistem DAPROS.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Process Button -->
+          <div style="margin-top:16px">
+            <button class="btn btn-primary btn-lg btn-block" id="btn-process-1" disabled>
+              <span class="icon">⚡</span>
+              Proses Data
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Result / Info -->
+        <div>
+          <!-- Preview Card -->
+          <div class="card" id="preview-card" style="margin-bottom:16px">
+            <div class="card-title"><span class="icon">👁️</span> Informasi File</div>
+            <div class="card-subtitle">Detail file yang diupload akan muncul di sini</div>
+
+            <div id="file-info-display" style="text-align:center;padding:24px 0;color:var(--text-muted)">
+              <div style="font-size:40px;margin-bottom:12px">📋</div>
+              <div style="font-size:13px">Belum ada file dipilih</div>
+            </div>
+          </div>
+
+          <!-- Progress Card (hidden initially) -->
+          <div class="card" id="progress-card" style="display:none">
+            <div class="card-title"><span class="icon">⚙️</span> Sedang Memproses...</div>
+            <div class="card-subtitle">Mohon tunggu, jangan tutup halaman ini</div>
+
+            <div class="progress-wrap">
+              <div class="progress-header">
+                <span class="progress-label" id="progress-label-1">Membaca file...</span>
+                <span class="progress-pct" id="progress-pct-1">0%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progress-bar-1" style="width:0%"></div>
+              </div>
+            </div>
+
+            <div class="progress-log" id="progress-log-1"></div>
+          </div>
+
+          <!-- Result Card -->
+          <div class="result-panel" id="result-panel-1">
+            <div class="result-success-header">
+              <div class="result-icon">✅</div>
+              <div>
+                <div class="result-title">Proses Selesai!</div>
+                <div class="result-subtitle">Data DAPROS berhasil dibuat dan siap didownload</div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-title"><span class="icon">📊</span> Ringkasan Hasil</div>
+              <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+                <div style="display:flex;justify-content:space-between;padding:10px;background:rgba(0,212,255,0.05);border-radius:8px;border:1px solid var(--border-color)">
+                  <span style="font-size:13px;color:var(--text-secondary)">Total data diproses</span>
+                  <span style="font-size:13px;font-weight:700;color:var(--accent-primary)" id="res-total">—</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;padding:10px;background:rgba(0,212,255,0.05);border-radius:8px;border:1px solid var(--border-color)">
+                  <span style="font-size:13px;color:var(--text-secondary)">Data berhasil</span>
+                  <span style="font-size:13px;font-weight:700;color:var(--success)" id="res-success">—</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;padding:10px;background:rgba(0,212,255,0.05);border-radius:8px;border:1px solid var(--border-color)">
+                  <span style="font-size:13px;color:var(--text-secondary)">File output</span>
+                  <span style="font-size:13px;font-weight:700;color:var(--text-primary)">hasil_rekomendasi_offering.xlsx</span>
+                </div>
+              </div>
+
+              <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+                <button class="btn btn-success" id="btn-download-1" style="flex:1">
+                  <span>⬇️</span> Download Excel
+                </button>
+                <button class="btn btn-secondary" id="btn-reset-1" style="flex-shrink:0">
+                  🔄 Proses Ulang
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<div class="toast-container" id="toast-container"></div>
+<script src="js/main.js"></script>
+<script>
+// ===== Sistem 1: Create DAPROS =====
+let uploadedFile1 = null;
+let outputFileId1 = null;
+
+const uploadZone1 = document.getElementById('upload-zone-1');
+const fileInput1 = document.getElementById('file-input-1');
+const fileList1 = document.getElementById('file-list-1');
+const btnProcess1 = document.getElementById('btn-process-1');
+const progressCard = document.getElementById('progress-card');
+const resultPanel = document.getElementById('result-panel-1');
+const fileInfoDisplay = document.getElementById('file-info-display');
+
+// Init upload zone
+initUploadZone(uploadZone1, fileInput1, (files) => {
+  if (files.length === 0) return;
+  const file = files[0];
+
+  // Validate extension
+  const ext = file.name.split('.').pop().toLowerCase();
+  if (!['xlsx', 'xls'].includes(ext)) {
+    showToast('Format file tidak didukung! Gunakan .xlsx atau .xls', 'error');
+    return;
+  }
+  if (file.size > 100 * 1024 * 1024) {
+    showToast('Ukuran file terlalu besar (max 100MB)', 'error');
+    return;
+  }
+
+  uploadedFile1 = file;
+  renderFileList1();
+  renderFileInfo1();
+  btnProcess1.disabled = false;
+  showToast('File berhasil diupload!', 'success');
+});
+
+function renderFileList1() {
+  fileList1.innerHTML = '';
+  if (!uploadedFile1) return;
+
+  const item = document.createElement('div');
+  item.className = 'file-item';
+  item.innerHTML = `
+    <span class="file-icon">${getFileIcon(uploadedFile1.name)}</span>
+    <div class="file-info">
+      <div class="file-name">${uploadedFile1.name}</div>
+      <div class="file-size">${formatFileSize(uploadedFile1.size)} &nbsp;·&nbsp; <span class="badge badge-green" style="font-size:10px;padding:1px 7px">Ready</span></div>
+    </div>
+    <button class="file-remove" id="remove-file-1" title="Hapus file">✕</button>
+  `;
+  fileList1.appendChild(item);
+
+  document.getElementById('remove-file-1').addEventListener('click', (e) => {
+    e.stopPropagation();
+    uploadedFile1 = null;
+    renderFileList1();
+    renderFileInfo1();
+    btnProcess1.disabled = true;
+    showToast('File dihapus', 'info');
+  });
+}
+
+function renderFileInfo1() {
+  if (!uploadedFile1) {
+    fileInfoDisplay.innerHTML = `
+      <div style="font-size:40px;margin-bottom:12px">📋</div>
+      <div style="font-size:13px;color:var(--text-muted)">Belum ada file dipilih</div>
+    `;
+    return;
+  }
+
+  const ext = uploadedFile1.name.split('.').pop().toUpperCase();
+  const kb = (uploadedFile1.size / 1024).toFixed(1);
+  fileInfoDisplay.innerHTML = `
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:center;gap:12px;padding:12px;background:rgba(0,212,255,0.05);border-radius:10px;border:1px solid var(--border-color)">
+        <div style="font-size:32px">📊</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${uploadedFile1.name}</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:3px">${formatFileSize(uploadedFile1.size)} &nbsp;·&nbsp; ${ext} Format</div>
+        </div>
+        <span class="badge badge-green">✓ Valid</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div style="padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;text-align:center">
+          <div style="font-size:11px;color:var(--text-muted)">Format</div>
+          <div style="font-size:14px;font-weight:700;color:var(--accent-primary);margin-top:3px">${ext}</div>
+        </div>
+        <div style="padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;text-align:center">
+          <div style="font-size:11px;color:var(--text-muted)">Ukuran</div>
+          <div style="font-size:14px;font-weight:700;color:var(--text-primary);margin-top:3px">${kb} KB</div>
+        </div>
+      </div>
+      <div style="padding:10px;background:rgba(16,185,129,0.07);border:1px solid rgba(16,185,129,0.2);border-radius:8px;text-align:center;font-size:12px;color:var(--success)">
+        ✅ File siap untuk diproses
+      </div>
+    </div>
+  `;
+}
+
+// Process button
+btnProcess1.addEventListener('click', async () => {
+  if (!uploadedFile1) {
+    showToast('Pilih file terlebih dahulu!', 'warning');
+    return;
+  }
+
+  const stepItems = document.querySelectorAll('.step-item');
+  const pctEl = document.getElementById('progress-pct-1');
+  const barEl = document.getElementById('progress-bar-1');
+  const logEl = document.getElementById('progress-log-1');
+
+  progressCard.style.display = 'block';
+  resultPanel.classList.remove('show');
+  btnProcess1.disabled = true;
+  btnProcess1.innerHTML = '<div class="spinner"></div> Memproses...';
+  updateSteps(stepItems, 2);
+  logEl.innerHTML = '<div class="log-entry">Mengirim file ke backend FastAPI...</div>';
+  barEl.style.width = '25%';
+  pctEl.textContent = '25%';
+
+  try {
+    const formData = new FormData();
+    formData.append('file', uploadedFile1);
+
+    const response = await fetch(`${API_BASE}/api/create-dapros`, {
+      method: 'POST',
+      body: formData
+    });
+
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.detail || 'Gagal memproses file');
+
+    outputFileId1 = data.file_id;
+    const summary = data.summary || {};
+
+    barEl.style.width = '100%';
+    pctEl.textContent = '100%';
+    logEl.innerHTML += '<div class="log-entry success">✓ File Excel output berhasil dibuat</div>';
+
+    document.getElementById('res-total').textContent = (summary.total || 0).toLocaleString('id-ID') + ' baris';
+    document.getElementById('res-success').textContent = (summary.total || 0).toLocaleString('id-ID') + ' baris';
+
+    setTimeout(() => {
+      progressCard.style.display = 'none';
+      resultPanel.classList.add('show');
+      updateSteps(stepItems, 3);
+      const prev = parseInt(localStorage.getItem('dapros_processed') || '0');
+      localStorage.setItem('dapros_processed', prev + 1);
+      showToast('DAPROS berhasil dibuat!', 'success', 5000);
+      btnProcess1.innerHTML = '<span class="icon">⚡</span> Proses Data';
+      btnProcess1.disabled = false;
+    }, 400);
+  } catch (err) {
+    showToast(err.message, 'error', 6000);
+    logEl.innerHTML += `<div class="log-entry error">✕ ${err.message}</div>`;
+    btnProcess1.innerHTML = '<span class="icon">⚡</span> Proses Data';
+    btnProcess1.disabled = false;
+  }
+});
+
+// Download button
+document.getElementById('btn-download-1').addEventListener('click', () => {
+  downloadOutput(outputFileId1);
+});
+
+// Reset button
+document.getElementById('btn-reset-1').addEventListener('click', () => {
+  uploadedFile1 = null;
+  renderFileList1();
+  renderFileInfo1();
+  btnProcess1.disabled = true;
+  btnProcess1.innerHTML = '<span class="icon">⚡</span> Proses Data';
+  resultPanel.classList.remove('show');
+  progressCard.style.display = 'none';
+  document.getElementById('progress-log-1').innerHTML = '';
+  document.getElementById('progress-bar-1').style.width = '0%';
+  document.getElementById('progress-pct-1').textContent = '0%';
+
+  const stepItems = document.querySelectorAll('.step-item');
+  updateSteps(stepItems, 0);
+  showToast('Form direset', 'info');
+});
+</script>
+</body>
+</html>

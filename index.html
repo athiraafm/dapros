@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DAPROS — Data Prospek System</title>
+  <meta name="description" content="DAPROS adalah sistem pengolahan Data Prospek yang modern dan efisien. Upload, proses, dan download data Excel dengan mudah." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>" />
+</head>
+<body>
+
+<!-- Background Orbs -->
+<div class="bg-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<!-- App Layout -->
+<div class="app-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">📊</div>
+      <div class="logo-text">
+        <h1>DAPROS</h1>
+        <p>Data Prospek System</p>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Menu Utama</div>
+
+      <a href="index.html" class="nav-item active" id="nav-home">
+        <span class="nav-icon">🏠</span>
+        <span>Dashboard</span>
+      </a>
+
+      <div class="nav-section-label" style="margin-top:16px">Sistem</div>
+
+      <a href="sistem1.html" class="nav-item" id="nav-s1">
+        <span class="nav-icon">✨</span>
+        <span>Create DAPROS</span>
+        <span class="nav-badge">S1</span>
+      </a>
+
+      <a href="sistem2.html" class="nav-item" id="nav-s2">
+        <span class="nav-icon">🔍</span>
+        <span>Filter Data</span>
+        <span class="nav-badge">S2</span>
+      </a>
+
+      <a href="sistem3.html" class="nav-item" id="nav-s3">
+        <span class="nav-icon">🗂️</span>
+        <span>Pembagian Data</span>
+        <span class="nav-badge">S3</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-card">
+        <div class="user-avatar">D</div>
+        <div class="user-info">
+          <p>DAPROS User</p>
+          <span>Admin</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Sidebar Overlay (mobile) -->
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+
+    <!-- Top Header -->
+    <header class="top-header">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="mobile-menu-btn" id="mobile-menu-btn" style="display:none">☰</button>
+        <div class="header-left">
+          <div class="header-title">Dashboard</div>
+          <div class="header-breadcrumb">Selamat datang di DAPROS</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="header-badge">
+          <div class="status-dot"></div>
+          Sistem Aktif
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="page-content">
+
+      <!-- Hero Section -->
+      <section class="landing-hero" style="min-height:auto;padding:0 0 40px 0">
+        <div class="hero-tag">
+          <span>📊</span>
+          <span>Versi 1.0 — Rules-Based System</span>
+        </div>
+
+        <h1 class="hero-title">
+          Sistem Pengolahan<br/>
+          <span class="gradient-text">Data Prospek</span><br/>
+          Terintegrasi
+        </h1>
+
+        <p class="hero-desc">
+          DAPROS memudahkan proses pengolahan data prospek dari upload file Excel hingga download hasil yang siap pakai.
+          Terdiri dari 3 sistem yang saling terintegrasi.
+        </p>
+
+        <div class="hero-actions">
+          <a href="sistem1.html" class="btn btn-primary btn-lg">
+            <span>✨</span> Mulai Create DAPROS
+          </a>
+          <a href="sistem2.html" class="btn btn-secondary btn-lg">
+            <span>🔍</span> Filter Data
+          </a>
+        </div>
+      </section>
+
+      <!-- Stats Row -->
+      <div class="grid-3 mb-8" style="margin-bottom:28px">
+        <div class="stat-card">
+          <div class="stat-header">
+            <div class="stat-icon cyan">📁</div>
+          </div>
+          <div class="stat-value" id="stat-processed">0</div>
+          <div class="stat-label">File Diproses</div>
+          <div class="stat-change up">↑ Sesi ini</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-header">
+            <div class="stat-icon green">✅</div>
+          </div>
+          <div class="stat-value" id="stat-success">3</div>
+          <div class="stat-label">Sistem Tersedia</div>
+          <div class="stat-change up">↑ Semua aktif</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-header">
+            <div class="stat-icon purple">⚡</div>
+          </div>
+          <div class="stat-value">100%</div>
+          <div class="stat-label">Akurasi Proses</div>
+          <div class="stat-change up">↑ Rules-based</div>
+        </div>
+      </div>
+
+      <!-- System Cards -->
+      <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:700;margin-bottom:16px;color:var(--text-primary)">
+        Pilih Sistem
+      </h2>
+
+      <div class="hero-cards">
+
+        <!-- Sistem 1 -->
+        <a href="sistem1.html" class="system-card s1">
+          <div class="system-card-num">Sistem 01</div>
+          <span class="system-card-icon">✨</span>
+          <div class="system-card-title">Create DAPROS</div>
+          <div class="system-card-desc">
+            Upload file Excel data prospek, sistem akan memproses dan membuat dokumen DAPROS yang terstruktur dan siap digunakan.
+          </div>
+          <div class="system-card-arrow" style="color:var(--accent-primary)">
+            Mulai proses <span>→</span>
+          </div>
+        </a>
+
+        <!-- Sistem 2 -->
+        <a href="sistem2.html" class="system-card s2">
+          <div class="system-card-num">Sistem 02</div>
+          <span class="system-card-icon">🔍</span>
+          <div class="system-card-title">Filter Data</div>
+          <div class="system-card-desc">
+            Upload hasil Create DAPROS beserta data 3 bulan terakhir untuk dicek dan difilter. Hasil disimpan dalam 2 sheet berbeda.
+          </div>
+          <div class="system-card-arrow" style="color:#a855f7">
+            Mulai filter <span>→</span>
+          </div>
+        </a>
+
+        <!-- Sistem 3 -->
+        <a href="sistem3.html" class="system-card s3">
+          <div class="system-card-num">Sistem 03</div>
+          <span class="system-card-icon">🗂️</span>
+          <div class="system-card-title">Pembagian Data</div>
+          <div class="system-card-desc">
+            Bagi data per Witel, input jumlah TAM, ISE, dan lainnya. Data yang tidak ada di historis otomatis masuk ke VAM.
+          </div>
+          <div class="system-card-arrow" style="color:var(--warning)">
+            Mulai pembagian <span>→</span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Info Section -->
+      <div class="info-box info" style="margin-top:28px">
+        <span class="info-icon">💡</span>
+        <div class="info-text">
+          <p><strong>Alur Kerja:</strong> Gunakan sistem secara berurutan untuk hasil terbaik.
+          <strong>Sistem 1</strong> → Create data DAPROS terlebih dahulu, kemudian
+          <strong>Sistem 2</strong> → Filter dengan data historis, lalu
+          <strong>Sistem 3</strong> → Bagi data ke masing-masing Witel.</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toast-container"></div>
+
+<script src="js/main.js"></script>
+<script>
+  // Animate stat counter
+  function animateCounter(el, target, duration = 1200) {
+    let start = 0;
+    const step = Math.ceil(target / (duration / 50));
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) { el.textContent = target; clearInterval(timer); }
+      else el.textContent = start;
+    }, 50);
+  }
+
+  // Active nav
+  document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+  document.getElementById('nav-home')?.classList.add('active');
+
+  // Load session stats from localStorage
+  window.addEventListener('DOMContentLoaded', () => {
+    const processed = parseInt(localStorage.getItem('dapros_processed') || '0');
+    animateCounter(document.getElementById('stat-processed'), processed);
+  });
+</script>
+</body>
+</html>

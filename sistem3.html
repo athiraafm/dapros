@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistem 3 — Pembagian Data per Witel</title>
+  <meta name="description" content="Pembagian Data: Bagi data prospek per Witel, input TAM, ISE, dan alokasi VAM." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗂️</text></svg>" />
+</head>
+<body>
+
+<div class="bg-orbs">
+  <div class="orb orb-1" style="background:#f59e0b"></div>
+  <div class="orb orb-2" style="background:#ef4444"></div>
+</div>
+
+<div class="app-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">📊</div>
+      <div class="logo-text">
+        <h1>DAPROS</h1>
+        <p>Data Prospek System</p>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Menu Utama</div>
+      <a href="index.html" class="nav-item">
+        <span class="nav-icon">🏠</span><span>Dashboard</span>
+      </a>
+      <div class="nav-section-label" style="margin-top:16px">Sistem</div>
+      <a href="sistem1.html" class="nav-item">
+        <span class="nav-icon">✨</span><span>Create DAPROS</span><span class="nav-badge">S1</span>
+      </a>
+      <a href="sistem2.html" class="nav-item">
+        <span class="nav-icon">🔍</span><span>Filter Data</span><span class="nav-badge">S2</span>
+      </a>
+      <a href="sistem3.html" class="nav-item active">
+        <span class="nav-icon">🗂️</span><span>Pembagian Data</span><span class="nav-badge">S3</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-card">
+        <div class="user-avatar">D</div>
+        <div class="user-info"><p>DAPROS User</p><span>Admin</span></div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="main-content">
+    <header class="top-header">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        <div class="header-left">
+          <div class="header-title">Pembagian Data</div>
+          <div class="header-breadcrumb">Dashboard / Sistem 3</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="header-badge">
+          <div class="status-dot"></div>
+          Sistem Aktif
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <div class="page-header-inner">
+          <div class="page-title-group">
+            <div class="page-number" style="color:var(--warning)">Sistem 03 — Pembagian</div>
+            <h1 class="page-title">Pembagian <span style="background:linear-gradient(135deg,#f59e0b,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Data</span></h1>
+            <p class="page-desc">Upload file data DAPROS, sistem akan mendeteksi data per Witel. Input jumlah alokasi untuk TAM, ISE, dan lainnya. Data yang tidak ada di historis otomatis masuk ke VAM.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step Indicator -->
+      <div class="step-indicator" id="step-indicator-3">
+        <div class="step-item">
+          <div class="step-circle active">1</div>
+          <div class="step-label"><span class="s-num">Langkah 1</span><span class="s-name">Upload File</span></div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">2</div>
+          <div class="step-label"><span class="s-num">Langkah 2</span><span class="s-name">Input Alokasi</span></div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">3</div>
+          <div class="step-label"><span class="s-num">Langkah 3</span><span class="s-name">Proses Bagi</span></div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">4</div>
+          <div class="step-label"><span class="s-num">Langkah 4</span><span class="s-name">Download</span></div>
+        </div>
+      </div>
+
+      <!-- Upload Section -->
+      <div class="card" style="margin-bottom:24px" id="upload-section-3">
+        <div class="card-title"><span class="icon">📁</span> Upload File Data DAPROS</div>
+        <div class="card-subtitle">Upload file Excel yang sudah melalui Sistem 1 (dan opsional Sistem 2)</div>
+
+        <div class="upload-zone" id="upload-zone-3" style="padding:36px 24px">
+          <input type="file" id="file-input-3" accept=".xlsx,.xls" />
+          <div class="upload-icon-wrap">🗂️</div>
+          <div class="upload-title">Upload File DAPROS</div>
+          <div class="upload-desc">Drag & drop atau klik untuk memilih</div>
+          <div class="upload-hint">📂 .xlsx / .xls</div>
+        </div>
+
+        <div class="file-list" id="file-list-3"></div>
+
+        <div id="preview-action-3" style="display:none;margin-top:16px">
+          <button class="btn btn-primary btn-lg btn-block" id="btn-preview-3" type="button">
+            <span>➡️</span> Lanjut ke Input Alokasi
+          </button>
+          <div id="preview-status-3" style="display:none;margin-top:10px;padding:10px 12px;border-radius:10px;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.18);color:var(--text-secondary);font-size:12.5px"></div>
+        </div>
+      </div>
+
+      <!-- Witel Section (hidden initially) -->
+      <div id="witel-section" style="display:none">
+
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px">
+          <div>
+            <h2 style="font-size:17px;font-weight:700;color:var(--text-primary)">🗺️ Data per Witel</h2>
+            <p style="font-size:12.5px;color:var(--text-secondary);margin-top:4px">Input alokasi untuk setiap Witel yang terdeteksi. VAM otomatis terisi jika data tidak ada di historis.</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+            <div style="padding:8px 14px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:8px;font-size:12px;color:var(--warning)">
+              <span id="witel-count">0</span> Witel Terdeteksi
+            </div>
+            <div style="padding:8px 14px;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.15);border-radius:8px;font-size:12px;color:var(--accent-primary)">
+              Total: <span id="total-data-3">0</span> Data
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Input Tim sesuai Colab -->
+        <div class="card" style="margin-bottom:18px;border-color:rgba(0,212,255,0.18)">
+          <div class="card-title"><span class="icon">👥</span> Input Nama Tim</div>
+          <div class="card-subtitle">Sesuai Colab: isi nama tim dari data terfilter. Contoh: TAM, ISE, DGS</div>
+          <div style="display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap">
+            <input id="team-input-3" type="text" value="TAM, ISE" placeholder="Contoh: TAM, ISE, DGS"
+              style="flex:1;min-width:240px;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:var(--text-primary);outline:none" />
+            <button class="btn btn-secondary" id="btn-build-team-form" type="button">➕ Buat Form Alokasi</button>
+          </div>
+        </div>
+
+        <!-- Witel Cards Grid -->
+        <div class="witel-grid" id="witel-grid"></div>
+
+        <!-- VAM Global -->
+        <div class="card" style="margin-top:20px;border-color:rgba(245,158,11,0.3)">
+          <div class="card-title">
+            <span class="icon">⚠️</span>
+            Alokasi VAM — Data Tidak Ada di Historis
+            <span class="badge badge-orange" style="margin-left:auto" id="vam-total-badge">0 data</span>
+          </div>
+          <div class="card-subtitle">Data yang tidak ditemukan di historis 3 bulan terakhir akan dialokasikan ke VAM.</div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.2);border-radius:10px;margin-top:12px;gap:12px;flex-wrap:wrap">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-size:28px">👤</span>
+              <div>
+                <div style="font-size:13px;font-weight:600;color:var(--warning)">VAM (Value Added Member)</div>
+                <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px">Input berapa data yang dialokasikan ke VAM</div>
+              </div>
+            </div>
+            <div class="form-input-num" style="width:160px">
+              <button class="num-btn minus">−</button>
+              <input type="number" class="num-input" id="vam-input" value="0" data-min="0" />
+              <button class="num-btn plus">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="card" style="margin-top:16px;background:rgba(0,0,0,0.2)">
+          <div class="card-title"><span class="icon">📊</span> Ringkasan Alokasi</div>
+          <div id="summary-grid-3" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:14px"></div>
+        </div>
+
+        <!-- Proses Button -->
+        <button class="btn btn-primary btn-lg btn-block" id="btn-process-3"
+          style="margin-top:20px;background:linear-gradient(135deg,#f59e0b,#ef4444);box-shadow:0 4px 20px rgba(245,158,11,0.3)">
+          <span>🗂️</span> Proses Pembagian Data
+        </button>
+
+        <!-- Progress -->
+        <div class="card" id="progress-card-3" style="display:none;margin-top:20px">
+          <div class="card-title"><span class="icon">⚙️</span> Memproses Pembagian...</div>
+          <div class="card-subtitle">Membagi data ke masing-masing Witel sesuai alokasi</div>
+          <div class="progress-wrap">
+            <div class="progress-header">
+              <span class="progress-label" id="progress-label-3">Inisialisasi...</span>
+              <span class="progress-pct" id="progress-pct-3">0%</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="progress-bar-3" style="width:0%;background:linear-gradient(135deg,#f59e0b,#ef4444)"></div>
+            </div>
+          </div>
+          <div class="progress-log" id="progress-log-3"></div>
+        </div>
+
+        <!-- Result -->
+        <div class="result-panel" id="result-panel-3" style="margin-top:20px">
+          <div class="result-success-header" style="background:rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.2)">
+            <div class="result-icon" style="background:rgba(245,158,11,0.15)">🗂️</div>
+            <div>
+              <div class="result-title" style="color:var(--warning)">Pembagian Selesai!</div>
+              <div class="result-subtitle">Data telah dibagi ke masing-masing Witel</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">📥</span> Download Hasil Pembagian</div>
+            <div id="result-files-3" style="display:flex;flex-direction:column;gap:8px;margin-top:12px"></div>
+
+            <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
+              <button class="btn btn-success" id="btn-download-3" style="flex:1;background:linear-gradient(135deg,#f59e0b,#ef4444);box-shadow:0 4px 20px rgba(245,158,11,0.3)">
+                <span>⬇️</span> Download Semua (ZIP)
+              </button>
+              <button class="btn btn-secondary" id="btn-reset-3">🔄 Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<div class="toast-container" id="toast-container"></div>
+<script src="js/main.js"></script>
+<script>
+// ===== Sistem 3: Pembagian Data =====
+let uploadedFile3 = null;
+let witelData = [];
+let teamList3 = ['TAM', 'ISE'];
+let uploadId3 = null;
+let outputFileId3 = null;
+let totalBersih3 = 0;
+let totalTerfilter3 = 0;
+
+const uploadZone3 = document.getElementById('upload-zone-3');
+const fileInput3 = document.getElementById('file-input-3');
+const fileList3 = document.getElementById('file-list-3');
+const witelSection = document.getElementById('witel-section');
+const witelGrid = document.getElementById('witel-grid');
+const teamInput3 = document.getElementById('team-input-3');
+const btnBuildTeamForm = document.getElementById('btn-build-team-form');
+const previewAction3 = document.getElementById('preview-action-3');
+const btnPreview3 = document.getElementById('btn-preview-3');
+const previewStatus3 = document.getElementById('preview-status-3');
+
+function parseTeams() {
+  const raw = (teamInput3?.value || '').split(',');
+  const unique = [];
+  raw.forEach(item => {
+    const name = item.trim().toUpperCase();
+    if (name && !unique.includes(name)) unique.push(name);
+  });
+  return unique;
+}
+
+function setPreviewInfo(summary) {
+  totalBersih3 = parseInt(summary?.total_bersih || 0);
+  totalTerfilter3 = parseInt(summary?.total_terfilter || summary?.total || 0);
+  document.getElementById('witel-count').textContent = witelData.length;
+  document.getElementById('total-data-3').textContent = totalTerfilter3.toLocaleString('id-ID');
+  document.getElementById('vam-total-badge').textContent = `${totalBersih3.toLocaleString('id-ID')} data bersih tersedia`;
+
+  const vamInput = document.getElementById('vam-input');
+  if (vamInput) {
+    vamInput.value = 0;
+    vamInput.dataset.max = totalBersih3;
+  }
+}
+
+initUploadZone(uploadZone3, fileInput3, async (files) => {
+  if (!files.length) return;
+  const file = files[0];
+  const ext = file.name.split('.').pop().toLowerCase();
+  if (!['xlsx', 'xls'].includes(ext)) {
+    showToast('Format tidak didukung. Upload file .xlsx atau .xls ya.', 'error');
+    return;
+  }
+
+  uploadedFile3 = file;
+  uploadId3 = null;
+  outputFileId3 = null;
+  witelData = [];
+
+  renderFile3();
+  if (previewAction3) previewAction3.style.display = 'block';
+  if (previewStatus3) {
+    previewStatus3.style.display = 'none';
+    previewStatus3.textContent = '';
+  }
+  witelSection.style.display = 'none';
+  document.getElementById('result-panel-3').classList.remove('show');
+  updateSteps(document.querySelectorAll('#step-indicator-3 .step-item'), 0);
+
+  showToast('File sudah dipilih. Klik Lanjut ke Input Alokasi untuk membaca WITEL.', 'success', 4500);
+});
+
+async function previewPembagianData() {
+  if (!uploadedFile3) {
+    showToast('Upload file dulu ya.', 'warning');
+    return;
+  }
+
+  const originalHtml = btnPreview3?.innerHTML;
+  if (btnPreview3) {
+    btnPreview3.disabled = true;
+    btnPreview3.innerHTML = '<span>⏳</span> Membaca WITEL...';
+  }
+  if (previewStatus3) {
+    previewStatus3.style.display = 'block';
+    previewStatus3.textContent = 'Sedang membaca file Excel dan mengambil rekap WITEL dari backend FastAPI...';
+  }
+
+  try {
+    const formData = new FormData();
+    formData.append('file', uploadedFile3);
+    const response = await fetch(`${API_BASE}/api/pembagian-preview`, { method: 'POST', body: formData });
+    let data = {};
+    try { data = await response.json(); } catch (_) {}
+    if (!response.ok) throw new Error(data.detail || 'Gagal membaca WITEL dari file.');
+
+    uploadId3 = data.upload_id;
+    const witels = data.summary?.witels || [];
+    witelData = witels.map(w => ({
+      name: w.name,
+      code: String(w.name).replace(/[^A-Za-z0-9]/g, '_').slice(0, 12),
+      total: parseInt(w.total || 0)
+    }));
+
+    setPreviewInfo(data.summary);
+    witelSection.style.display = 'block';
+    witelSection.style.animation = 'fadeInUp 0.4s ease';
+    updateSteps(document.querySelectorAll('#step-indicator-3 .step-item'), 1);
+
+    buildTeamForm();
+    if (previewStatus3) {
+      previewStatus3.style.display = 'block';
+      previewStatus3.textContent = `${witelData.length} WITEL berhasil dibaca. Silakan isi nama tim dan alokasi.`;
+    }
+    showToast(`${witelData.length} WITEL terdeteksi. Isi nama tim lalu klik Buat Form Alokasi.`, 'success', 5000);
+    witelSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } catch (err) {
+    const msg = err?.message || String(err);
+    if (previewStatus3) {
+      previewStatus3.style.display = 'block';
+      previewStatus3.style.borderColor = 'rgba(239,68,68,0.35)';
+      previewStatus3.style.background = 'rgba(239,68,68,0.08)';
+      previewStatus3.textContent = 'Gagal membaca file: ' + msg + ' Pastikan backend FastAPI aktif di port 8000 dan file punya sheet Dapros_Terfilter/kolom WITEL.';
+    }
+    showToast(msg, 'error', 7000);
+  } finally {
+    if (btnPreview3) {
+      btnPreview3.disabled = false;
+      btnPreview3.innerHTML = originalHtml || '<span>➡️</span> Lanjut ke Input Alokasi';
+    }
+  }
+}
+
+btnPreview3?.addEventListener('click', previewPembagianData);
+
+btnBuildTeamForm?.addEventListener('click', () => {
+  buildTeamForm();
+  showToast(`Form alokasi dibuat untuk tim: ${teamList3.join(', ')}`, 'success');
+});
+
+function buildTeamForm() {
+  const teams = parseTeams();
+  if (!teams.length) {
+    showToast('Nama tim belum diisi. Contoh: TAM, ISE, DGS', 'warning');
+    return;
+  }
+  teamList3 = teams;
+  renderWitelCards();
+  updateSummary();
+  initNumInputs();
+  attachSummaryListeners();
+}
+
+function renderFile3() {
+  fileList3.innerHTML = '';
+  if (!uploadedFile3) return;
+
+  const item = document.createElement('div');
+  item.className = 'file-item';
+  item.innerHTML = `
+    <span class="file-icon">🗂️</span>
+    <div class="file-info">
+      <div class="file-name">${uploadedFile3.name}</div>
+      <div class="file-size">${formatFileSize(uploadedFile3.size)}</div>
+    </div>
+    <button class="file-remove" id="rm-file-3">✕</button>
+  `;
+  fileList3.appendChild(item);
+
+  document.getElementById('rm-file-3').addEventListener('click', (e) => {
+    e.stopPropagation();
+    uploadedFile3 = null;
+    uploadId3 = null;
+    outputFileId3 = null;
+    witelData = [];
+    fileList3.innerHTML = '';
+    witelSection.style.display = 'none';
+    if (previewAction3) previewAction3.style.display = 'none';
+    if (previewStatus3) previewStatus3.style.display = 'none';
+    updateSteps(document.querySelectorAll('#step-indicator-3 .step-item'), 0);
+  });
+}
+
+function renderWitelCards() {
+  witelGrid.innerHTML = '';
+
+  witelData.forEach((witel, idx) => {
+    const rows = teamList3.map(team => `
+      <div class="witel-row">
+        <div class="witel-role">${team}</div>
+        <div class="form-input-num">
+          <button class="num-btn minus">−</button>
+          <input type="number" class="num-input witel-input" data-witel="${idx}" data-team="${team}" value="0" data-min="0" data-max="${witel.total}" />
+          <button class="num-btn plus">+</button>
+        </div>
+      </div>
+    `).join('');
+
+    const card = document.createElement('div');
+    card.className = 'witel-card';
+    card.innerHTML = `
+      <div class="witel-header">
+        <div class="witel-name">
+          <div class="witel-icon">🗺️</div>
+          ${witel.name}
+        </div>
+        <div class="witel-total">${witel.total} data</div>
+      </div>
+      ${rows}
+      <div class="witel-vam">
+        <div class="witel-role">Sisa Terfilter</div>
+        <span style="font-size:13px;font-weight:700;color:var(--warning)" id="witel-sisa-${idx}">${witel.total}</span>
+      </div>
+    `;
+    witelGrid.appendChild(card);
+  });
+}
+
+function attachSummaryListeners() {
+  document.querySelectorAll('.witel-input').forEach(input => {
+    input.addEventListener('input', () => {
+      const idx = parseInt(input.dataset.witel);
+      if (idx >= 0 && witelData[idx]) updateWitelSisa(idx);
+      updateSummary();
+    });
+  });
+  document.getElementById('vam-input')?.addEventListener('input', updateSummary);
+}
+
+function updateWitelSisa(idx) {
+  const inputs = document.querySelectorAll(`.witel-input[data-witel="${idx}"]`);
+  let total = 0;
+  inputs.forEach(inp => total += parseInt(inp.value) || 0);
+  const sisa = witelData[idx].total - total;
+  const sisaEl = document.getElementById(`witel-sisa-${idx}`);
+  if (sisaEl) {
+    sisaEl.textContent = sisa;
+    sisaEl.style.color = sisa < 0 ? 'var(--danger, #ef4444)' : 'var(--warning)';
+  }
+}
+
+function updateSummary() {
+  const summaryGrid = document.getElementById('summary-grid-3');
+  const totals = {};
+  teamList3.forEach(team => totals[team] = 0);
+
+  document.querySelectorAll('.witel-input').forEach(i => {
+    const team = i.dataset.team;
+    totals[team] = (totals[team] || 0) + (parseInt(i.value) || 0);
+  });
+
+  const vam = parseInt(document.getElementById('vam-input')?.value) || 0;
+  const totalTim = Object.values(totals).reduce((a, b) => a + b, 0);
+  const sisaTerfilter = Math.max(0, totalTerfilter3 - totalTim);
+  const sisaBersih = Math.max(0, totalBersih3 - vam);
+
+  summaryGrid.innerHTML = teamList3.map(team => `
+    <div style="padding:12px;background:rgba(0,212,255,0.06);border-radius:10px;border:1px solid rgba(0,212,255,0.12);text-align:center">
+      <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">${team} Total</div>
+      <div style="font-size:20px;font-weight:800;color:var(--accent-primary)">${totals[team] || 0}</div>
+    </div>
+  `).join('') + `
+    <div style="padding:12px;background:rgba(245,158,11,0.06);border-radius:10px;border:1px solid rgba(245,158,11,0.12);text-align:center">
+      <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">VAM Total</div>
+      <div style="font-size:20px;font-weight:800;color:var(--warning)">${vam}</div>
+    </div>
+    <div style="padding:12px;background:rgba(16,185,129,0.06);border-radius:10px;border:1px solid rgba(16,185,129,0.12);text-align:center">
+      <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">Sisa Terfilter</div>
+      <div style="font-size:20px;font-weight:800;color:var(--success)">${sisaTerfilter}</div>
+    </div>
+    <div style="padding:12px;background:rgba(124,58,237,0.06);border-radius:10px;border:1px solid rgba(124,58,237,0.12);text-align:center">
+      <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">Sisa Bersih</div>
+      <div style="font-size:20px;font-weight:800;color:#a855f7">${sisaBersih}</div>
+    </div>
+  `;
+}
+
+function collectAllocations() {
+  const teams = {};
+  teamList3.forEach(team => teams[team] = {});
+
+  document.querySelectorAll('.witel-input').forEach(inp => {
+    const idx = parseInt(inp.dataset.witel);
+    const team = inp.dataset.team;
+    const val = parseInt(inp.value) || 0;
+    const witelName = witelData[idx]?.name;
+    if (!witelName || !team) return;
+    teams[team][witelName] = val;
+  });
+
+  return {
+    vam: parseInt(document.getElementById('vam-input')?.value) || 0,
+    teams
+  };
+}
+
+function validateAllocation() {
+  if (!uploadedFile3 && !uploadId3) return 'File belum diupload.';
+  if (!teamList3.length) return 'Nama tim belum diisi.';
+
+  const vam = parseInt(document.getElementById('vam-input')?.value) || 0;
+  if (vam > totalBersih3) return `Jumlah VAM (${vam}) melebihi data bersih tersedia (${totalBersih3}).`;
+
+  for (let idx = 0; idx < witelData.length; idx++) {
+    let used = 0;
+    document.querySelectorAll(`.witel-input[data-witel="${idx}"]`).forEach(inp => used += parseInt(inp.value) || 0);
+    if (used > witelData[idx].total) {
+      return `Total alokasi untuk WITEL ${witelData[idx].name} (${used}) melebihi data tersedia (${witelData[idx].total}).`;
+    }
+  }
+  return null;
+}
+
+// Process Button
+document.getElementById('btn-process-3').addEventListener('click', async () => {
+  const error = validateAllocation();
+  if (error) {
+    showToast(error, 'warning', 6000);
+    return;
+  }
+
+  const prog3 = document.getElementById('progress-card-3');
+  const res3 = document.getElementById('result-panel-3');
+  const btn = document.getElementById('btn-process-3');
+  const logEl = document.getElementById('progress-log-3');
+  const barEl = document.getElementById('progress-bar-3');
+  const pctEl = document.getElementById('progress-pct-3');
+
+  prog3.style.display = 'block';
+  res3.classList.remove('show');
+  btn.disabled = true;
+  btn.innerHTML = '<div class="spinner"></div> Memproses...';
+
+  const steps3Items = document.querySelectorAll('#step-indicator-3 .step-item');
+  updateSteps(steps3Items, 2);
+  logEl.innerHTML = '<div class="log-entry">Mengirim alokasi ke backend FastAPI...</div>';
+  barEl.style.width = '35%';
+  pctEl.textContent = '35%';
+
+  try {
+    const allocations = collectAllocations();
+    const formData = new FormData();
+    if (uploadId3) formData.append('upload_id', uploadId3);
+    else formData.append('file', uploadedFile3);
+    formData.append('allocations', JSON.stringify(allocations));
+
+    const response = await fetch(`${API_BASE}/api/pembagian-data`, { method: 'POST', body: formData });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.detail || 'Gagal memproses pembagian');
+
+    outputFileId3 = data.file_id;
+    barEl.style.width = '100%';
+    pctEl.textContent = '100%';
+    logEl.innerHTML += '<div class="log-entry success">✓ File ZIP hasil pembagian berhasil dibuat</div>';
+
+    setTimeout(() => {
+      prog3.style.display = 'none';
+      res3.classList.add('show');
+      updateSteps(steps3Items, 3);
+      renderResultFiles();
+      showToast('Pembagian data selesai!', 'success', 5000);
+      btn.innerHTML = '<span>🗂️</span> Proses Pembagian Data';
+      btn.disabled = false;
+    }, 400);
+  } catch (err) {
+    showToast(err.message, 'error', 6000);
+    logEl.innerHTML += `<div class="log-entry error">✕ ${err.message}</div>`;
+    btn.innerHTML = '<span>🗂️</span> Proses Pembagian Data';
+    btn.disabled = false;
+  }
+});
+
+function renderResultFiles() {
+  const container = document.getElementById('result-files-3');
+  container.innerHTML = `
+    <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.15);border-radius:8px">
+      <span style="font-size:20px">🗜️</span>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:12.5px;font-weight:600;color:var(--text-primary)">hasil_pembagian_dapros.zip</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:1px">Berisi file hasil pembagian dan sisa data belum kepakai</div>
+      </div>
+      <span style="font-size:13px;color:var(--warning)">⬇️</span>
+    </div>
+  `;
+}
+
+document.getElementById('btn-download-3').addEventListener('click', () => downloadOutput(outputFileId3));
+
+document.getElementById('btn-reset-3').addEventListener('click', () => {
+  uploadedFile3 = null;
+  uploadId3 = null;
+  outputFileId3 = null;
+  witelData = [];
+  fileList3.innerHTML = '';
+  witelGrid.innerHTML = '';
+  witelSection.style.display = 'none';
+  if (previewAction3) previewAction3.style.display = 'none';
+  if (previewStatus3) previewStatus3.style.display = 'none';
+  document.getElementById('progress-card-3').style.display = 'none';
+  document.getElementById('result-panel-3').classList.remove('show');
+  document.getElementById('progress-log-3').innerHTML = '';
+  document.getElementById('progress-bar-3').style.width = '0%';
+  document.getElementById('progress-pct-3').textContent = '0%';
+  updateSteps(document.querySelectorAll('#step-indicator-3 .step-item'), 0);
+  showToast('Form direset', 'info');
+});
+</script>
+</body>
+</html>
